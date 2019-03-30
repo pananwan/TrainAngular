@@ -1,0 +1,38 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Student Name</th>
+        <th>Weight</th>
+        <th>height</th>
+        <th>BMI</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{student.studentID}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.Weight}}</td>
+        <td>{{student.height}}</td>
+        <td>{{student.bmi}}</td>
+        <td *ngIf="student.bmi > 25">อ้วน</td>
+        <td *ngIf="student.bmi < 25">ผอม</td>
+        <td *ngIf="student.bmi == 25">สมส่วน</td>
+       
+      </tr>
+      <tr *ngFor="let s of studentlist">
+          <td>{{s.studentID}}</td>
+          <td>{{s.name}}</td>
+          <td>{{s.Weight}}</td>
+          <td>{{s.height}}</td>
+          <td>{{s.bmi}}</td>
+        <td *ngIf="s.bmi > 25">อ้วน</td>
+        <td *ngIf="s.bmi < 25">ผอม</td>
+        <td *ngIf="s.bmi == 25">สมส่วน</td>
+      </tr>
+    </tbody>
+  </table>
+</div>  
