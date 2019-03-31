@@ -1,38 +1,31 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <table class="table">
+<h1>รายการสินค้า</h1>
+<table class="table">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Student Name</th>
-        <th>Weight</th>
-        <th>height</th>
-        <th>BMI</th>
-        <th>Result</th>
+        <th>รหัสสินค้า</th>
+        <th>ชื่อสินค้า</th>
+        <th>รูปสินค้า</th>
+        <th>ราคาสินค้า</th>
+
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>{{student.studentID}}</td>
-        <td>{{student.name}}</td>
-        <td>{{student.weight}}</td>
-        <td>{{student.height}}</td>
-        <td>{{student.bmi}}</td>
-        <td *ngIf="student.bmi > 25">อ้วน</td>
-        <td *ngIf="student.bmi < 25">ผอม</td>
-        <td *ngIf="student.bmi == 25">สมส่วน</td>
+      <tr *ngFor="let p of productlist">
        
-      </tr>
-      <tr *ngFor="let s of studentlist">
-          <td>{{s.studentID}}</td>
-          <td>{{s.name}}</td>
-          <td>{{s.weight}}</td>
-          <td>{{s.height}}</td>
-          <td>{{s.bmi}}</td>
-        <td *ngIf="s.bmi > 25">อ้วนooooooo</td>
-        <td *ngIf="s.bmi < 25">ผอม</td>
-        <td *ngIf="s.bmi == 25">สมส่วน</td>
-      </tr>
+        <td>{{p.pId}}</td>
+        <td>{{p.pName}}</td>
+        <td>{{p.pCost}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-primary"
+          (click)="selectProduct(p)">เลือกสินค้า</button>
+        </td>
+     </tr>
     </tbody>
+
   </table>
-</div>  
+  <div class="row">
+    <div class="col-6 bg-info"></div>
+    <div class="col-6 bg-info"></div>
+  </div>
+  <app-product-detail [selectedProduct]="selectedProduct"> </app-product-detail>

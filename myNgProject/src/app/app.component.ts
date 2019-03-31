@@ -6,44 +6,30 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'myNgProject';
-  name: string = "Miss Prannawan Kongpad";
-  score:number=99;
-  student:any={
-    name : "lala",
-    studentID : "5921602655",
-    weight : 30,
-    height : 155
-  }
-  studentlist = [{
-    name : "lala",
-    studentID : "5921602655",
-    weight : 30,
-    height : 155
+  productlist = [{
+    pId : "0001",
+    pName : "แปรงสีฟัน",
+    pCost : 200,
+    img : "https://www.watsons.co.th/medias/sys_master/front/zoom/8945078206494.jpg"
   },
   {
-    name : "lulu",
-    studentID : "5921602605",
-    weight : 60,
-    height : 175
+    pId : "0002",
+    pName : "แก้วน้ำ",
+    pCost : 10,
+    img : "https://www.ikea.com/th/th/images/products/pokal-pho-khxl-k-w-na-si-the-xrkh-wxys__0550429_PE658170_S4.JPG"
   },
   {
-    name : "lolo",
-    studentID : "5921602955",
-    weight : 30,
-    height : 195
-
-  }]
-  
-constructor(){
-  this.student.bmi=(this.student.weight/((this.student.height/100)*(this.student.height/100))).toFixed(2);
-  this.studentlist.map((Object,index)=>{
-    let Obj:any=Object;
-    Obj.bmi = (Object.weight/((Object.height/100)*(Object.height/100))).toFixed(2);
-    return Obj;
-  })
+    pId : "0003",
+    pName : "ยาสีฟัน",
+    pCost : 20,
+    img : "https://static.bigc.co.th/media/catalog/product/cache/2/image/497x497/9df78eab33525d08d6e5fb8d27136e95/8/8/8850006232019.jpg"
+  }];
+selectedProduct : any;
+selectProduct(p){
+  this.selectedProduct = p;
+  console.log(p);
 }
+ constructor(){
 
-
-
+ }
 }
