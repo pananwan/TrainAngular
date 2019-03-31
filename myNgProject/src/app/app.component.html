@@ -1,38 +1,80 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div class="container">
+
+ หาผลคูณ
+  <div class="row">
+    <div class= "col-5">
+      <div class="input-group input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">ค่าที่ 1</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+        [(ngModel)] ="request.key1">
+      </div>
+  </div>
+<div class="col-5">
+  <div class="input-group input-group-sm">
+    <div class="input-group-prepend">
+      <span class= "input-group-text" id="inputGroup-sizing-sm">ค่าที่ 2</span>
+   </div>
+    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+     [(ngModel)] ="request.key2">
+  </div>
+  </div>
+ <div class="col-2">
+   <button class="btn-success" (click)="getData()">คำนวณ</button>
+ </div>
+</div>
+<span class="badge badge-danger">ผลลัพธ์</span>
+{{result}}
+</div>
+
+<hr>
+<h4>ข้อมูลนิสิต</h4>
+<div class="row">
+  <div class= "col-5">
+    <div class="input-group input-group-sm">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">รหัสนิสิต</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+      [(ngModel)] ="userDetail.id">
+    </div>
+</div>
+<div class="col-5">
+<div class="input-group input-group-sm">
+  <div class="input-group-prepend">
+    <span class= "input-group-text" id="inputGroup-sizing-sm">ชื่อนิสิต</span>
+ </div>
+  <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+   [(ngModel)] ="userDetail.name">
+</div>
+</div>
+<hr>
+
+<div class="container">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let n of noteDetail">{{n.name}}
+     <button style="float:right;" class="btn btn-warning" (click)="editNote(n)">แก้ไขชื่อ</button>
+      <button style= "float:right;" class="btn btn-info" (click)="selectNote(n.list)">ดูรายละเอียด</button>
+      <li class="list-group-item bg-warning">แก้ไขNOTE {{editNoteDetail.note_id}}<input class="form-control" name="noteName" [(ngModel)]="editNoteDetail.name"><button *ngIf="editNoteDetail.name"class="btn btn-info btn-sm" (click)="updateNoteName()">แก้ไข</button><br>
+        <small *ngIf="errorMsg">{{errorMsg}}</small>
+  </ul>
+  <hr>
+  <h4>รายละเอียด note</h4>
   <table class="table">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Student Name</th>
-        <th>Weight</th>
-        <th>height</th>
-        <th>BMI</th>
-        <th>Result</th>
+        <th>Priorty</th>
+        <th>รายละเอียด</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>{{student.studentID}}</td>
-        <td>{{student.name}}</td>
-        <td>{{student.Weight}}</td>
-        <td>{{student.height}}</td>
-        <td>{{student.bmi}}</td>
-        <td *ngIf="student.bmi > 25">อ้วน</td>
-        <td *ngIf="student.bmi < 25">ผอม</td>
-        <td *ngIf="student.bmi == 25">สมส่วน</td>
-       
-      </tr>
-      <tr *ngFor="let s of studentlist">
-          <td>{{s.studentID}}</td>
-          <td>{{s.name}}</td>
-          <td>{{s.Weight}}</td>
-          <td>{{s.height}}</td>
-          <td>{{s.bmi}}</td>
-        <td *ngIf="s.bmi > 25">อ้วน</td>
-        <td *ngIf="s.bmi < 25">ผอม</td>
-        <td *ngIf="s.bmi == 25">สมส่วน</td>
+    <tr *ngFor="let list of listDetail" [ngClass]="{'bg-danger text-white': list.priority>5,'bg-info':list.priority<5}">
+        <td>{{list.priority}}</td>
+        <td>{{list.detail}}</td>
       </tr>
     </tbody>
   </table>
-</div>  
+
+
+</div>
