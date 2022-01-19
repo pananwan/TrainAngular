@@ -1,2 +1,1 @@
-Hi, 안녕하세요 저는 태국에서 왔습니다 
-만나서 반가워요
+ Angular for CS KPS
